@@ -1,1 +1,1 @@
-Scala implementation of the SMILEY's library
+Scala implementation of the SMILES library
