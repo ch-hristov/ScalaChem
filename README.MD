@@ -1,0 +1,1 @@
+Scala implementation of the SMILEY's library
