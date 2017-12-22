@@ -1,0 +1,10 @@
+Object oriented folder, please write code that uses the interfaces in the common folder. 
+The interfaces must take into account both the functional and object oriented approach.
+That is, there must not be a difference between a molecular graph built by the 
+functional approach and the object oriented approach. Note that interfaces are contained in 
+the Infrastructure project. Use the following scheme when building software:
+
+Implementation -----> Infrastructure-Interface <----- Usage
+
+That is, the usage and the implementation must be separated and the usage must be using only the interface and never 
+the actual implementation.
