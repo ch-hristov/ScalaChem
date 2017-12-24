@@ -1,3 +1,5 @@
-trait IMolecule{
-    IAtom[] Atoms;
+package ScalaChem.Infrastructure
+
+trait IMolecule {
+    List[IAtom] Atoms;
 }
