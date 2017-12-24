@@ -1,0 +1,3 @@
+trait IMolecule{
+    IAtom[] Atoms;
+}
