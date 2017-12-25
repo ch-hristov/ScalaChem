@@ -1,7 +1,8 @@
 package ScalaChem.Infrastructure
+import ScalaChem.Infrastructure
 
-trait IBond{
-    Type : BondType
-    From : IAtom
-    To : IAtom
+trait IBond {
+    var Type : BondType
+    var From : IAtom
+    var To : IAtom
 }

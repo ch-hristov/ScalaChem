@@ -1,6 +1,7 @@
 package ScalaChem.Infrastructure
+import ScalaChem.Infrastructure
 
 trait IAtom {
-    Element : ChemicalElement
-    Connections : List[IBond]
+    var Element : ChemicalElement
+    var Connections : List[IBond]
 }

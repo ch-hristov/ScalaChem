@@ -1,5 +1,6 @@
 package ScalaChem.Infrastructure
+import ScalaChem.Infrastructure
 
 trait IMolecule {
-    List[IAtom] Atoms;
+    var Atoms : List[IAtom]
 }

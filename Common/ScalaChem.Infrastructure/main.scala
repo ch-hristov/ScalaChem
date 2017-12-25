@@ -1,6 +1,8 @@
 package ScalaChem.Infrastructure
-object Main {
-   def main(args: Array[String]) {
-       
+import ScalaChem.Infrastructure
+
+object Main  extends App {
+   override def main(args: Array[String]) {
+       println("ok")
     }
 }

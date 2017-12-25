@@ -1,4 +1,4 @@
 package ScalaChem.Infrastructure
-object ChemicalElement{
-    //TODO:Add chemical elements here..
+import ScalaChem.Infrastructure
+class ChemicalElement{
 }

@@ -1,6 +1,7 @@
-package ScalaChem
+package ScalaChem.Infrastructure
+import ScalaChem.Infrastructure
 
-object BondType extends Enumeration {
+class BondType extends Enumeration {
     type BondType = Value
 
     val Single = Value("Single")
