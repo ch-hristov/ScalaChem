@@ -3,5 +3,5 @@ import ScalaChem.Infrastructure
 
 trait IMolecule {
     var Atoms : List[IAtom]
-    def Connect(IAtom a, IAtom b)
+    def Connect(a : IAtom, b : IAtom)
 }

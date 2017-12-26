@@ -1,6 +1,6 @@
 package ScalaChem.MolGraph
 
-import ScalaChem.Infrastructure
+import ScalaChem.Infrastructure.{IAtom, IMolecule}
 
 /**
  * Corresponds to a single record from the PubChem Compound database.
@@ -8,5 +8,9 @@ import ScalaChem.Infrastructure
  * Each Compound is uniquely identified by a CID.
  */
 class Molecule extends IMolecule( ) {
-    
+  override var Atoms: List[IAtom] = _
+
+  override def Connect(a: IAtom, b: IAtom): Unit = {
+
+  }
 }

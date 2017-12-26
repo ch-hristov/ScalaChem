@@ -1,0 +1,3 @@
+sbt compile main.scala
+sbt compile ./main.scala
+sbt compile ./main
