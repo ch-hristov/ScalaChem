@@ -1,4 +1,4 @@
-package ScalaChem.Infrastructure
+package ScalaChem.MolGraph
 import ScalaChem.Infrastructure
 
 object Main  extends App {

@@ -1,4 +1,4 @@
-package smiles
+package ScalaChem.Infrastructure
 
 object BondType extends Enumeration(1){
     type BondType = Value
@@ -19,13 +19,13 @@ object BondType extends Enumeration(1){
  * @param: order: Bond order
  * 
  */
-class Bond(val aid1 : Int, val aid2 : Int, val order : Int = BondType(1).id) {
+class Bond(val aid1 : Int, val aid2 : Int) {
     /**  
 	 * Override the equals method for Bond
 	 * With this, expressions like b1 equals b2 or b1==b2 will work if all values are the same. 
 	 */
     override def equals(other: Any) = other match {
-        case that: Bond => this.aid1 == that.aid1 && this.aid2 == that.aid2 && this.order == that.order
+        case that: Bond => this.aid1 == that.aid1 && this.aid2 == that.aid2
         case _ => false
     }
 }
