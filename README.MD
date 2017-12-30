@@ -1,1 +1,0 @@
-Scala implementation of the SMILES library

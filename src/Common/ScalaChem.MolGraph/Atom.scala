@@ -1,21 +1,16 @@
 package ScalaChem.MolGraph
-import ScalaChem.Infrastructure.{ChemicalElement, IAtom, IBond}
+import ScalaChem.Infrastructure.{ChemicalElement, IAtom, IBond , IMolecule}
 
-class Atom(val aid : Int, val anum : ChemicalElement, var charge : Int = 0) extends IAtom {
-    /**  
-	 * Override the equals method for Atoms
-	 * With this, expressions like a1 equals a2 or a1==a2 will work if all values are the same. 
-	 */
+class Atom(val element : ChemicalElement, var charge : Int = 0, var molecule : IMolecule) extends IAtom {
+
     override def equals(other: Any) = other match {
-        case that: Atom => this.anum == that.anum
+        case that: Atom => this.element == that.element
         case _ => false
     }
     
-    override def toString() : String = {
-        val elem = this.anum
-        s"Element: \n\tSymbol: $elem\n\tAtomic Number: $anum\n\tCharge: $charge"
+    override def toString() : String = {s"Element: \n\tSymbol: $this.element\n\tCharge: $charge"
     }
 
-  override var Element: ChemicalElement = _
-  override var Connections: List[IBond] = _
+   override var Element: ChemicalElement = this.element
+   override var Connections: List[IBond] = this.molecule.neighboursOf(this)
 }

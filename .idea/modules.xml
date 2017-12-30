@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ChemScala.iml" filepath="$PROJECT_DIR$/ChemScala.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ScalaChem.iml" filepath="$PROJECT_DIR$/ScalaChem.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Chem_Scala.iml" filepath="$PROJECT_DIR$/Chem_Scala.iml" />
     </modules>
   </component>
 </project>

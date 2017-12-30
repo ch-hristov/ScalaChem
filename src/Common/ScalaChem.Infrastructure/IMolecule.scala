@@ -1,7 +1,8 @@
 package ScalaChem.Infrastructure
 import ScalaChem.Infrastructure
+import ScalaChem.MolGraph.Atom
 
 trait IMolecule {
-    var Atoms : List[IAtom]
-    def Connect(a : IAtom, b : IAtom) : Boolean
+  def neighboursOf(atom: Atom): scala.List[_root_.ScalaChem.Infrastructure.IBond]
+  def connect(a : IAtom, b : IAtom) : Boolean
 }
