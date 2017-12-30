@@ -1,7 +1,7 @@
 package ScalaChem.Infrastructure
 import ScalaChem.Infrastructure
 
-class ChemicalElement extends Enumeration(1){
+object ChemicalElement extends Enumeration(1){
     type ChemicalElement = Value
     val H  =  Value(1)
     val He =  Value(2)

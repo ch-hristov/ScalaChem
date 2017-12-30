@@ -1,7 +1,10 @@
 package ScalaChem.MolGraph
-import ScalaChem.Infrastructure.{ChemicalElement, IAtom, IBond , IMolecule}
+import ScalaChem.Infrastructure.ChemicalElement.ChemicalElement
+import ScalaChem.Infrastructure.{ChemicalElement, IAtom, IBond, IMolecule}
 
-class Atom(val element : ChemicalElement, var charge : Int = 0, var molecule : IMolecule) extends IAtom {
+class Atom(val element : ChemicalElement, var charge : Int = 0) extends IAtom {
+
+   override var molecule : IMolecule = _
 
     override def equals(other: Any) = other match {
         case that: Atom => this.element == that.element
@@ -13,4 +16,10 @@ class Atom(val element : ChemicalElement, var charge : Int = 0, var molecule : I
 
    override var Element: ChemicalElement = this.element
    override var Connections: List[IBond] = this.molecule.neighboursOf(this)
+
+  //
+  // You shouldn't call this method normally. I'm just currently too lazy to find a way
+  // to restrict its visibility.
+  //
+  override def setMolecule(molecule: Molecule): Unit = this.molecule=molecule
 }

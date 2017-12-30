@@ -15,6 +15,7 @@ class Molecule extends mutable.MutableList[IAtom] with IMolecule {
     _graph(elem) = new mutable.MutableList[IAtom]()
     _num(elem)=_atomId
     this._atomId = this._atomId + 1
+    elem.setMolecule(this)
     super.appendElem(elem)
   }
 
