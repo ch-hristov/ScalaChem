@@ -24,5 +24,5 @@ class Atom(val element : ChemicalElement, var charge : Int = 0) extends IAtom {
   // You shouldn't call this method normally. I'm just currently too lazy to find a way
   // to restrict its visibility.
   //
-  override def setMolecule(molecule: Molecule): Unit = this.molecule=molecule
+  override def setMolecule(molecule: IMolecule): Unit = this.molecule=molecule
 }

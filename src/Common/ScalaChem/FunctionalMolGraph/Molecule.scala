@@ -1,11 +1,10 @@
-package ScalaChem.MolGraph
+package Common.ScalaChem.FunctionalMolGraph
 
-import Common.ScalaChem.MolGraph.Bond
+import Common.ScalaChem.FunctionalMolGraph.Bond
 import ScalaChem.Infrastructure.{BondType, IAtom, IBond, IMolecule}
+import Common.ScalaChem.FunctionalMolGraph.Atom
 
 import scala.collection.mutable
-import scala.collection.mutable.ListBuffer
-
 
 class Molecule extends mutable.MutableList[IAtom] with IMolecule {
 
