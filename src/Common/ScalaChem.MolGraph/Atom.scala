@@ -11,11 +11,14 @@ class Atom(val element : ChemicalElement, var charge : Int = 0) extends IAtom {
         case _ => false
     }
     
-    override def toString() : String = {s"Element: \n\tSymbol: $this.element\n\tCharge: $charge"
-    }
+    override def toString() : String = {s"Element: \n\tSymbol: $this.element\n\tCharge: $charge"}
 
    override var Element: ChemicalElement = this.element
-   override var Connections: List[IBond] = this.molecule.neighboursOf(this)
+
+   override def connections() : List[IBond] =
+   {
+     return this.molecule.neighboursOf(this)
+   }
 
   //
   // You shouldn't call this method normally. I'm just currently too lazy to find a way
