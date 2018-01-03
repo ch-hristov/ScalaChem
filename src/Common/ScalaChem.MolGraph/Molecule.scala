@@ -8,6 +8,7 @@ import scala.collection.mutable.ListBuffer
 
 
 class Molecule extends mutable.MutableList[IAtom] with IMolecule {
+
   private var _atomId = 0
   private var _num = mutable.Map[IAtom,Integer]()
   private var _graph = mutable.Map[IAtom,mutable.MutableList[IBond]]()
@@ -21,8 +22,10 @@ class Molecule extends mutable.MutableList[IAtom] with IMolecule {
   }
 
   override def connect(a: IAtom, b: IAtom, t : BondType): Boolean = {
+
     if(!this.contains(a) || !this.contains(b))
       return false
+
     val bond = new Bond(a,b,t)
 
     _graph(a) += bond
@@ -37,11 +40,9 @@ class Molecule extends mutable.MutableList[IAtom] with IMolecule {
 
   private def getSmiles(): String ={
     var str = "";
-
     this.foreach(v => {
       str += v.toString()
     })
-
     return str;
   }
 
