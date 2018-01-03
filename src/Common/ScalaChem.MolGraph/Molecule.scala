@@ -1,4 +1,4 @@
-package ScalaChem.MolGraph
+package Common.ScalaChem.MolGraph
 
 import Common.ScalaChem.MolGraph.Bond
 import ScalaChem.Infrastructure.{BondType, IAtom, IBond, IMolecule}
@@ -40,9 +40,11 @@ class Molecule extends mutable.MutableList[IAtom] with IMolecule {
 
   private def getSmiles(): String ={
     var str = "";
+
     this.foreach(v => {
       str += v.toString()
     })
+
     return str;
   }
 
