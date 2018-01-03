@@ -1,11 +1,14 @@
 package ScalaChem.MolGraph
+import java.nio.CharBuffer
+
+import Common.ScalaChem.MolGraph.{Atom, Molecule}
+import Common.ScalaChem.SMILES.SmilesParser
 import ScalaChem.Infrastructure.ChemicalElement
 
 object Main  extends App {
-   override def main(args: Array[String]) {
-     //create a new molecule
-       var mol = new Molecule()
-       mol.appendElem(new Atom(ChemicalElement.C,0));
-       println("adssa")
+   override def main(args: Array[String]): Unit = {
+     var sp = new SmilesParser()
+     var molecule = sp.parseSmiles("CCCC");
+     println(molecule)
     }
 }

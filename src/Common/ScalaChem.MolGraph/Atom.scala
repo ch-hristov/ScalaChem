@@ -25,7 +25,7 @@ import ScalaChem.Infrastructure.{ChemicalElement, IAtom, IBond, IMolecule}
   // You shouldn't call this method normally. I'm just currently too lazy to find a way
   // to restrict its visibility.
   //
-  override def setMolecule(molecule: Molecule): Unit = this.molecule=molecule
+  override def setMolecule(molecule: IMolecule): Unit = this.molecule=molecule
 
   var implicitHydrogens : Int = 0
 

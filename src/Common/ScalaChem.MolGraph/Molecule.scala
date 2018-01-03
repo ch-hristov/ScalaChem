@@ -48,7 +48,7 @@ class Molecule extends mutable.MutableList[IAtom] with IMolecule {
     return str;
   }
 
-  override def neighboursOf(atom: Atom): List[IBond] ={
+  override def neighboursOf(atom: IAtom): List[IBond] ={
     return this._graph(atom).toList;
   }
 }
