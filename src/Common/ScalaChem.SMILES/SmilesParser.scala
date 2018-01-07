@@ -51,14 +51,13 @@ class SmilesParser() {
 
           if (_cycles.contains(next) && (index = _cycles.indexOf(next)) != -1) {
 
-            var cycleIndex = _cycles(next);
-            var item = cycleMap(cycleIndex)
+            var item = cycleMap.contains(next);
 
-            if(item != null){
+            if(item){
               if(atomStack.length > 0){
                 var top = atomStack.top
                 atomStack.pop
-                mol.connect(item,top, Common.ScalaChem.Infrastructure.BondType.Single)
+                mol.connect(cycleMap(next),top, Common.ScalaChem.Infrastructure.BondType.Single)
               }
               else{
                 throw new Exception("Trying to create a cycle with no startig atom!")

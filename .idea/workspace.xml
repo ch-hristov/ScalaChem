@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f6968c75-b84d-4e14-bfac-1694a84b85b9" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/out/production/Chem_Scala/ScalaChem/MolGraph/Main$.class" afterPath="$PROJECT_DIR$/out/production/Chem_Scala/ScalaChem/MolGraph/Main$.class" />
-      <change beforePath="$PROJECT_DIR$/src/Common/ScalaChem.MolGraph/main.scala" afterPath="$PROJECT_DIR$/src/Common/ScalaChem.MolGraph/main.scala" />
       <change beforePath="$PROJECT_DIR$/src/Common/ScalaChem.SMILES/SmilesParser.scala" afterPath="$PROJECT_DIR$/src/Common/ScalaChem.SMILES/SmilesParser.scala" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -17,11 +14,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="SmilesParser.scala" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SmilesParser.scala" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Common/ScalaChem.SMILES/SmilesParser.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1019">
-              <caret line="51" column="39" lean-forward="false" selection-start-line="51" selection-start-column="39" selection-end-line="51" selection-end-column="39" />
+            <state relative-caret-position="756">
+              <caret line="59" column="42" lean-forward="false" selection-start-line="59" selection-start-column="42" selection-end-line="59" selection-end-column="42" />
               <folding>
                 <element signature="e#33#107#0" expanded="true" />
               </folding>
@@ -53,7 +50,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ChemicalElement.scala" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ChemicalElement.scala" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Common/ScalaChem.Infrastructure/ChemicalElement.scala">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="21">
@@ -781,14 +778,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Common/ScalaChem.Infrastructure/ChemicalElement.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="2" column="7" lean-forward="false" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Common/ScalaChem.MolGraph/Atom.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="273">
@@ -809,6 +798,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Common/ScalaChem.SMILES/SmilesParser.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="756">
+          <caret line="59" column="42" lean-forward="false" selection-start-line="59" selection-start-column="42" selection-end-line="59" selection-end-column="42" />
+          <folding>
+            <element signature="e#33#107#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Common/ScalaChem.MolGraph/main.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
@@ -819,13 +818,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Common/ScalaChem.SMILES/SmilesParser.scala">
+    <entry file="file://$PROJECT_DIR$/src/Common/ScalaChem.Infrastructure/ChemicalElement.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1019">
-          <caret line="51" column="39" lean-forward="false" selection-start-line="51" selection-start-column="39" selection-end-line="51" selection-end-column="39" />
-          <folding>
-            <element signature="e#33#107#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="21">
+          <caret line="2" column="7" lean-forward="false" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+          <folding />
         </state>
       </provider>
     </entry>
