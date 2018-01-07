@@ -3,8 +3,6 @@ package Common.ScalaChem.SMILES
 import Common.ScalaChem.Infrastructure.{ChemicalElement, IAtom, IMolecule}
 import Common.ScalaChem.MolGraph.{Atom, Molecule}
 
-import scala.collection.immutable.Stack
-
 class SmilesParser() {
 
   // The dictionary of possible aliphatic, aromatic and cyclic structures
@@ -17,12 +15,14 @@ class SmilesParser() {
   def parseSmiles(smiles : String): IMolecule = {
     println("Starting parsing..");
 
-    var numStack = Stack()
-    val atomStack = Stack()
+    var numStack = scala.collection.mutable.Stack[Int]()
+    val atomStack = scala.collection.mutable.Stack[IAtom]()
     var mol = new Molecule()
     var cycleMap = Map[Char,IAtom]();
 
     for(c <- smiles) {
+      println(atomStack.length  )
+
       var next = c
       println("Next token : " + next)
       var index: Int = 0
@@ -56,12 +56,15 @@ class SmilesParser() {
             if(item){
               if(atomStack.length > 0){
                 var top = atomStack.top
-                atomStack.pop
                 mol.connect(cycleMap(next),top, Common.ScalaChem.Infrastructure.BondType.Single)
+                atomStack.pop
               }
               else{
                 throw new Exception("Trying to create a cycle with no startig atom!")
               }
+            }
+            else{
+              cycleMap += (next -> atomStack.top)
             }
           }
 
