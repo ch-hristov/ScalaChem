@@ -12,7 +12,9 @@ import Common.ScalaChem.Infrastructure.{IAtom, IBond, IMolecule}
       case _ => false
   }
     
-  override def toString() : String = {s"Element: \n\tSymbol: $this.element\n\tCharge: $charge"}
+  override def toString() : String = {
+   return this.element.toString
+  }
 
   override var Element: ChemicalElement = this.element
 

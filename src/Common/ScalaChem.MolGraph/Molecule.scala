@@ -1,10 +1,8 @@
 package Common.ScalaChem.MolGraph
-
 import Common.ScalaChem.Infrastructure.BondType.BondType
 import Common.ScalaChem.Infrastructure.{IAtom, IBond, IMolecule}
 
 import scala.collection.mutable
-
 
 class Molecule extends mutable.MutableList[IAtom] with IMolecule {
 
@@ -21,15 +19,11 @@ class Molecule extends mutable.MutableList[IAtom] with IMolecule {
   }
 
   override def connect(a: IAtom, b: IAtom, t : BondType): Boolean = {
-
     if(!this.contains(a) || !this.contains(b))
       return false
-
     val bond = new Bond(a,b,t)
-
     _graph(a) += bond
     _graph(b) += bond
-
     return true
   }
 
@@ -39,11 +33,9 @@ class Molecule extends mutable.MutableList[IAtom] with IMolecule {
 
   private def getSmiles(): String ={
     var str = "";
-
     this.foreach(v => {
       str += v.toString()
     })
-
     return str;
   }
 

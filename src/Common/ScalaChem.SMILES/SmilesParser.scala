@@ -12,31 +12,31 @@ class SmilesParser() {
 
   def parseSmiles(smiles : String): IMolecule = {
     println("Starting parsing..");
-
     val atomStack = Stack()
     var mol = new Molecule()
-
     for(c <- smiles) {
-
       var next = c
-      println("Next token is : " + next);
-
       var index: Int = 0
 
       if ((index = _aliph.indexOf(next)) != -1 || (index = _aromatic(next)) != -1) {
-        var aliphaticAtom = _aliph(index);
 
+        var aliphaticAtom = _aliph(index);
         var element = ChemicalElement.withName(aliphaticAtom.toString)
         var atom = new Atom(element, 0)
 
-        var top = atomStack.top.asInstanceOf[IAtom]
+        mol.appendElem(atom);
+        var top = atom.asInstanceOf[IAtom];
+
+        if(atomStack.length > 0)
+          top = atomStack.top.asInstanceOf[IAtom]
+
         if(atomStack.length > 0)
           atomStack.pop
 
-        mol.appendElem(atom)
-        mol.connect(top , atom , Common.ScalaChem.Infrastructure.BondType.Single)
-        atomStack.push(atom)
+        if(top != null)
+          mol.connect(top , atom , Common.ScalaChem.Infrastructure.BondType.Single)
 
+        atomStack.push(atom)
       } else {
           if ((index = _cycles.indexOf(next)) != -1) {
             var cycleIndex = _cycles(next);
