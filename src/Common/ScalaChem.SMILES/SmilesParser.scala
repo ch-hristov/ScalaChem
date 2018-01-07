@@ -6,15 +6,24 @@ import Common.ScalaChem.MolGraph.{Atom, Molecule}
 import scala.collection.immutable.Stack
 
 class SmilesParser() {
+
+  // The dictionary of possible aliphatic, aromatic and cyclic structures
+  // The (,),[,] are directly used in the parser below
+
   private var _aliph : List[Char] = List('C','B','N','O','P','S','F','I')
   private var _aromatic : List[Char] = List('c','b','n','o','p','s','f','i')
   private var _cycles : List[Char] = List('1','2','3','4','5','6','7','8','9')
 
   def parseSmiles(smiles : String): IMolecule = {
     println("Starting parsing..");
+
+    var numStack = Stack()
     val atomStack = Stack()
     var mol = new Molecule()
+    var cycleMap = Map[Int,IAtom]();
+
     for(c <- smiles) {
+
       var next = c
       var index: Int = 0
 
@@ -38,9 +47,17 @@ class SmilesParser() {
 
         atomStack.push(atom)
       } else {
+
           if ((index = _cycles.indexOf(next)) != -1) {
+
             var cycleIndex = _cycles(next);
+            var item = cycleMap(index)
+
+            if(item != null){
+              
+            }
           }
+
           else if (next == '(') {
             if (atomStack.isEmpty) throw new Exception("Cannot start a branch here");
             atomStack.push(atomStack.top)
@@ -52,6 +69,7 @@ class SmilesParser() {
         }
       }
     }
+
     return mol;
   }
 }
