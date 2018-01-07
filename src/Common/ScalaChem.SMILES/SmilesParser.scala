@@ -20,14 +20,15 @@ class SmilesParser() {
     var numStack = Stack()
     val atomStack = Stack()
     var mol = new Molecule()
-    var cycleMap = Map[Int,IAtom]();
+    var cycleMap = Map[Char,IAtom]();
 
     for(c <- smiles) {
-
       var next = c
+      println("Next token : " + next)
       var index: Int = 0
 
-      if ((index = _aliph.indexOf(next)) != -1 || (index = _aromatic(next)) != -1) {
+      if ((_aliph.contains(next) && (index = _aliph.indexOf(next)) != -1) ||
+         (_aromatic.contains(next) && (index = _aromatic(next)) != -1)) {
 
         var aliphaticAtom = _aliph(index);
         var element = ChemicalElement.withName(aliphaticAtom.toString)
@@ -48,13 +49,20 @@ class SmilesParser() {
         atomStack.push(atom)
       } else {
 
-          if ((index = _cycles.indexOf(next)) != -1) {
+          if (_cycles.contains(next) && (index = _cycles.indexOf(next)) != -1) {
 
             var cycleIndex = _cycles(next);
-            var item = cycleMap(index)
+            var item = cycleMap(cycleIndex)
 
             if(item != null){
-              
+              if(atomStack.length > 0){
+                var top = atomStack.top
+                atomStack.pop
+                mol.connect(item,top, Common.ScalaChem.Infrastructure.BondType.Single)
+              }
+              else{
+                throw new Exception("Trying to create a cycle with no startig atom!")
+              }
             }
           }
 

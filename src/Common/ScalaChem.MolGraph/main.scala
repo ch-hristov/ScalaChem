@@ -4,7 +4,7 @@ import Common.ScalaChem.SMILES.SmilesParser
 object Main  extends App {
    override def main(args: Array[String]): Unit = {
      var sp = new SmilesParser()
-     var molecule = sp.parseSmiles("CCCC");
+     var molecule = sp.parseSmiles("CC1CCC1CC");
      println(molecule.toString())
     }
 }
