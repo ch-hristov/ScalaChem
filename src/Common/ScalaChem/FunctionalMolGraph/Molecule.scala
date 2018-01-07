@@ -1,10 +1,11 @@
-package Common.ScalaChem.MolGraph
+package Common.ScalaChem.FunctionalMolGraph
 
+import Common.ScalaChem.FunctionalMolGraph.Bond
+import Common.ScalaChem.FunctionalMolGraph.Atom
 import Common.ScalaChem.Infrastructure.BondType.BondType
-import Common.ScalaChem.Infrastructure.{IAtom, IBond, IMolecule}
+import Common.ScalaChem.Infrastructure.{BondType, IAtom, IBond, IMolecule}
 
 import scala.collection.mutable
-
 
 class Molecule extends mutable.MutableList[IAtom] with IMolecule {
 
@@ -39,11 +40,9 @@ class Molecule extends mutable.MutableList[IAtom] with IMolecule {
 
   private def getSmiles(): String ={
     var str = "";
-
     this.foreach(v => {
       str += v.toString()
     })
-
     return str;
   }
 

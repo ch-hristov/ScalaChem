@@ -1,6 +1,6 @@
-package ScalaChem.Infrastructure
-import ScalaChem.Infrastructure
-import ScalaChem.Infrastructure.ChemicalElement.ChemicalElement
+package Common.ScalaChem.Infrastructure
+
+import Common.ScalaChem.Infrastructure.ChemicalElement.ChemicalElement
 
 trait IAtom {
     def setMolecule(molecule: IMolecule)

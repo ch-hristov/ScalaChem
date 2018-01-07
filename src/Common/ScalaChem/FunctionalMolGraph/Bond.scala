@@ -1,4 +1,4 @@
-package Common.ScalaChem.MolGraph
+package Common.ScalaChem.FunctionalMolGraph
 
 import Common.ScalaChem.Infrastructure.BondType.BondType
 import Common.ScalaChem.Infrastructure.{IAtom, IBond}

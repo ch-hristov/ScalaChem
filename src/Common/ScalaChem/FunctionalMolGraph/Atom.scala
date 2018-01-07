@@ -1,24 +1,25 @@
-package Common.ScalaChem.MolGraph
+package Common.ScalaChem.FunctionalMolGraph
 
 import Common.ScalaChem.Infrastructure.ChemicalElement.ChemicalElement
 import Common.ScalaChem.Infrastructure.{IAtom, IBond, IMolecule}
 
- class Atom(val element : ChemicalElement, var charge : Int = 0) extends IAtom {
+class Atom(val element : ChemicalElement, var charge : Int = 0) extends IAtom {
 
   override var molecule : IMolecule = _
 
   override def equals(other: Any) = other match {
-      case that: Atom => this.element == that.element
-      case _ => false
+
+    case that: Atom => this.element == that.element
+    case _ => false
   }
-    
+
   override def toString() : String = {s"Element: \n\tSymbol: $this.element\n\tCharge: $charge"}
 
   override var Element: ChemicalElement = this.element
 
   override def connections() : List[IBond] =
   {
-     return this.molecule.neighboursOf(this)
+    return this.molecule.neighboursOf(this)
   }
 
   //
@@ -26,8 +27,4 @@ import Common.ScalaChem.Infrastructure.{IAtom, IBond, IMolecule}
   // to restrict its visibility.
   //
   override def setMolecule(molecule: IMolecule): Unit = this.molecule=molecule
-
-  var implicitHydrogens : Int = 0
-
-  var explicitHydrogens : Int = 0
 }
