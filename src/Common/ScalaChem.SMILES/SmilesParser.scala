@@ -1,6 +1,7 @@
 package Common.ScalaChem.SMILES
 
-import Common.ScalaChem.Infrastructure.{ChemicalElement, IAtom, IMolecule}
+import Common.ScalaChem.Infrastructure.BondType.BondType
+import Common.ScalaChem.Infrastructure.{BondType, ChemicalElement, IAtom, IMolecule}
 import Common.ScalaChem.MolGraph.{Atom, Molecule}
 
 class SmilesParser() {
@@ -12,7 +13,7 @@ class SmilesParser() {
   private var _aromatic : List[Char] = List('c','b','n','o','p','s','f','i')
   private var _cycles : List[Char] = List('1','2','3','4','5','6','7','8','9')
 
-  def parseSmiles(smiles : String): IMolecule = {
+  def parseSmiles(smiles : String, bond : (IAtom,IAtom,BondType) => Boolean, atomAdded : (IAtom) => Unit): IMolecule = {
     println("Starting parsing..");
 
     var numStack = scala.collection.mutable.Stack[Int]()
@@ -21,9 +22,9 @@ class SmilesParser() {
     var cycleMap = Map[Char,IAtom]();
 
     for(c <- smiles) {
-      println(atomStack.length  )
-
+      println(atomStack.length)
       var next = c
+
       println("Next token : " + next)
       var index: Int = 0
 
@@ -34,7 +35,9 @@ class SmilesParser() {
         var element = ChemicalElement.withName(aliphaticAtom.toString)
         var atom = new Atom(element, 0)
 
-        mol.appendElem(atom);
+        atomAdded(atom)
+        //mol.appendElem(atom);
+
         var top = atom.asInstanceOf[IAtom];
 
         if(atomStack.length > 0)
@@ -43,8 +46,10 @@ class SmilesParser() {
         if(atomStack.length > 0)
           atomStack.pop
 
-        if(top != null)
-          mol.connect(top , atom , Common.ScalaChem.Infrastructure.BondType.Single)
+        if(top != null) {
+          bond(top,atom,BondType.Single)
+          //mol.connect(top, atom, Common.ScalaChem.Infrastructure.BondType.Single)
+        }
 
         atomStack.push(atom)
       } else {
@@ -56,7 +61,8 @@ class SmilesParser() {
             if(item){
               if(atomStack.length > 0){
                 var top = atomStack.top
-                mol.connect(cycleMap(next),top, Common.ScalaChem.Infrastructure.BondType.Single)
+                bond(cycleMap(next),top,BondType.Single)
+                //mol.connect(cycleMap(next),top, Common.ScalaChem.Infrastructure.BondType.Single)
                 atomStack.pop
               }
               else{
