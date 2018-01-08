@@ -13,6 +13,7 @@ class MoleculeParser extends SmilesParser {
 
   def parse(smiles : String): IMolecule={
     mol = new Molecule()
-    return parseSmiles(smiles,parseBond,x => mol += (x))
+    parseSmiles(smiles,parseBond,x => mol += (x))
+    return mol
   }
 }
