@@ -5,6 +5,7 @@ import Common.ScalaChem.Infrastructure.{IAtom, IMolecule}
 import Common.ScalaChem.MolGraph.Molecule
 
 class MoleculeParser extends SmilesParser {
+
   var mol : IMolecule = null
   def parseBond(atom1:IAtom, atom2 : IAtom, bondType: BondType): Boolean ={
     mol.connect(atom1,atom2,bondType)
@@ -16,4 +17,5 @@ class MoleculeParser extends SmilesParser {
     parseSmiles(smiles,parseBond,x => mol += (x))
     return mol
   }
+
 }

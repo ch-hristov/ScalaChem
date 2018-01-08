@@ -13,6 +13,11 @@ class Molecule extends mutable.MutableList[IAtom] with IMolecule {
   private var _num = mutable.Map[IAtom,Integer]()
   private var _graph = mutable.Map[IAtom,mutable.MutableList[IBond]]()
 
+  def bonds() : mutable.ListBuffer[IBond] = {
+    throw new Exception("Not implemented")
+  }
+
+
   override def appendElem(elem: IAtom): Unit = {
     _graph(elem) = new mutable.MutableList[IBond]()
     _num(elem)=_atomId

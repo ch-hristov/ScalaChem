@@ -6,6 +6,6 @@ object Main  extends App {
      var sp = new MoleculeParser()
      var molecule = sp.parse("CCCC1CCC1")
 
-     println(molecule.toString());
+     println(molecule.bonds().length);
     }
 }

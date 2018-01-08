@@ -6,9 +6,14 @@ import scala.collection.mutable
 
 class Molecule extends mutable.MutableList[IAtom] with IMolecule {
 
+  def bonds() : mutable.ListBuffer[IBond] = {
+    return _bonds
+  }
+
   private var _atomId = 0
   private var _num = mutable.Map[IAtom,Integer]()
   private var _graph = mutable.Map[IAtom,mutable.MutableList[IBond]]()
+  private var _bonds = mutable.ListBuffer[IBond]()
 
   override def appendElem(elem: IAtom): Unit = {
     _graph(elem) = new mutable.MutableList[IBond]()
@@ -24,6 +29,7 @@ class Molecule extends mutable.MutableList[IAtom] with IMolecule {
     val bond = new Bond(a,b,t)
     _graph(a) += bond
     _graph(b) += bond
+    _bonds += bond.asInstanceOf[IBond]
     return true
   }
 
