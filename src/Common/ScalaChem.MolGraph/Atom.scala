@@ -3,13 +3,14 @@ package Common.ScalaChem.MolGraph
 import Common.ScalaChem.Infrastructure.ChemicalElement.ChemicalElement
 import Common.ScalaChem.Infrastructure.{IAtom, IBond, IMolecule}
 
- class Atom(val element : ChemicalElement, var charge : Int = 0) extends IAtom {
+class Atom(val element : ChemicalElement, var charge : Int = 0) extends IAtom {
 
   override var molecule : IMolecule = _
 
-  override def equals(other: Any) = other match {
-      case that: Atom => this.element == that.element
-      case _ => false
+  override def equals(other: Any) : Boolean = {
+   val s : Atom = other.asInstanceOf[Atom]
+   if(this.element == s.element) true
+   else false
   }
     
   override def toString() : String = {
