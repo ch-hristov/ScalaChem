@@ -6,11 +6,6 @@ import Common.ScalaChem.Infrastructure.{IAtom, IBond, IMolecule}
  class Atom(val element : ChemicalElement, var charge : Int = 0) extends IAtom {
 
   override var molecule : IMolecule = _
-
-  override def equals(other: Any) = other match {
-      case that: Atom => this.element == that.element
-      case _ => false
-  }
     
   override def toString() : String = {
    return this.element.toString

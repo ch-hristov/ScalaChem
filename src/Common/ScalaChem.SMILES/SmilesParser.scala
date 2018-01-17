@@ -36,33 +36,28 @@ class SmilesParser() {
         var atom = new Atom(element, 0)
 
         atomAdded(atom)
-        //mol.appendElem(atom);
 
         var top = atom.asInstanceOf[IAtom];
 
         if(atomStack.length > 0)
           top = atomStack.top.asInstanceOf[IAtom]
 
+        if(top != null && top != atom) bond(top,atom,BondType.Single)
+
         if(atomStack.length > 0)
           atomStack.pop
 
-        if(top != null) {
-          bond(top,atom,BondType.Single)
-          //mol.connect(top, atom, Common.ScalaChem.Infrastructure.BondType.Single)
-        }
+
 
         atomStack.push(atom)
       } else {
-
           if (_cycles.contains(next) && (index = _cycles.indexOf(next)) != -1) {
-
             var item = cycleMap.contains(next);
 
             if(item){
               if(atomStack.length > 0){
                 var top = atomStack.top
                 bond(cycleMap(next),top,BondType.Single)
-                //mol.connect(cycleMap(next),top, Common.ScalaChem.Infrastructure.BondType.Single)
                 atomStack.pop
               }
               else{
@@ -85,7 +80,6 @@ class SmilesParser() {
         }
       }
     }
-
     return mol;
   }
 }
