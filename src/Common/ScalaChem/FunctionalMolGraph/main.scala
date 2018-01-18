@@ -13,7 +13,7 @@ object Main  extends App {
 
     //Niels add stuff in test_items
 
-    b.foreach(x => runner.inject(x))
+    test_items.foreach(x => runner.inject(x))
 
     runner.run(5)
   }
