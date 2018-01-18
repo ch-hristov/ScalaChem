@@ -1,12 +1,20 @@
 package Common.ScalaChem.FunctionalMolGraph
 
-import Common.ScalaChem.SMILES.MoleculeParser
+import Common.ScalaChem.Test.{Test, TestRunner}
+
+import scala.collection.mutable.ListBuffer
 
 object Main  extends App {
-  override def main(args: Array[String]) {
-    var sp = new MoleculeParser()
-    var molecule = sp.parse("CCCC1CCC1")
-    println(molecule)
-    println(molecule.bonds().length);
+  override def main(args: Array[String]): Unit = {
+
+    var runner : TestRunner = new TestRunner()
+
+    var test_items = new ListBuffer[Test]()
+
+    //Niels add stuff in test_items
+
+    b.foreach(x => runner.inject(x))
+
+    runner.run(5)
   }
 }
