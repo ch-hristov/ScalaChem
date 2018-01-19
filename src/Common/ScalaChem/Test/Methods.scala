@@ -12,10 +12,10 @@ class Methods {
     for (i <- 0 to g.size) g(i) = newElement
   }
 
-  //def replaceAtoms_fp(g : IMolecule) = {
-  //  var newElement = new Atom(ChemicalElement.C)
-  //  g.map( _ = newElement)
-  //}
+  def replaceAtoms_fp(g : IMolecule) = {
+    var newElement = new Atom(ChemicalElement.C)
+    g.map( _ -> newElement)
+  }
 
   //  zip
   def zipIt_oop (g : IMolecule) = {
@@ -39,7 +39,6 @@ class Methods {
   def filterByElement_fp(g : IMolecule) = {
     g.filter((i: IAtom) => i != ChemicalElement.C)
   }
-
 
   // sum atomic number, DOES id work here??
   def sumAtomicNumber_oop(g : IMolecule) = {
