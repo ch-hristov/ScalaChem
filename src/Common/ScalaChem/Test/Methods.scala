@@ -1,10 +1,8 @@
-package Common.Tests
+package Common.ScalaChem.Test
 
 import Common.ScalaChem.Infrastructure.ChemicalElement.ChemicalElement
-import Common.ScalaChem.Infrastructure.{ChemicalElement, IAtom, IBond, IMolecule}
+import Common.ScalaChem.Infrastructure.{ChemicalElement, IAtom, IMolecule}
 import Common.ScalaChem.MolGraph.Atom
-import Common.ScalaChem.FunctionalMolGraph
-import scala.collection.mutable
 
 class Methods {
 
