@@ -16,13 +16,16 @@ object Main  extends App {
      var methods = new Methods()
 
      oop_runner.inject(new TestMethod(methods.zipIt_oop))
+     oop_runner.inject(new TestMethod(methods.filterByElement_oop))
      oop_runner.inject(new TestMethod(methods.replaceAtoms_oop))
      oop_runner.inject(new TestMethod(methods.sumAtomicNumber_oop))
 
      //TODO: Niels inject the other methods
+     func_runner.inject(new TestMethod(methods.zipIt_fp))
      func_runner.inject(new TestMethod(methods.filterByElement_fp))
+     func_runner.inject(new TestMethod(methods.replaceAtoms_fp))
 
-     var k = 1000000
+     var k = 1000
 
      var ts_oop = System.nanoTime()
      oop_runner.run(k)
