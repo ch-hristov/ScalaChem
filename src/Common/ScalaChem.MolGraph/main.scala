@@ -28,11 +28,11 @@ object Main  extends App {
      var k = 1000
 
      var ts_oop = System.nanoTime()
-     oop_runner.run(k)
+     oop_runner.run(molecule,k)
      var tf_oof = System.nanoTime()
 
      var ts_func = System.nanoTime()
-     func_runner.run(k)
+     func_runner.run(molecule,k)
      var tf_func = System.nanoTime()
 
      println("OOP : " + (tf_oof - ts_oop).toString + " Func: " + (tf_func - ts_func).toString);

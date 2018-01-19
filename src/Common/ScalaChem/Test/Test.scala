@@ -5,7 +5,9 @@ import Common.ScalaChem.Infrastructure.IMolecule
 import scala.collection.mutable.ListBuffer
 
 class TestMethod( func : IMolecule => Unit) {
-   def Function(){return func;}
+   def Function(mol : IMolecule){
+     return func(mol);
+   }
 }
 
 class TestRunner {
@@ -16,17 +18,17 @@ class TestRunner {
       items += t;
   }
 
-  private def run_internal(max_levels : Int, curr_level : Int): Unit = {
+  private def run_internal(molecule : IMolecule,max_levels : Int, curr_level : Int): Unit = {
     println("Currently at level :" + curr_level.toString)
     if(curr_level > max_levels)return;
 
-    for(i <- 0 to this.items.length - 1){
-      this.items(i).Function();
-    }
-    this.run_internal(max_levels, curr_level + 1)
+    for(i <- 0 to this.items.length - 1)
+      this.items(i).Function(molecule);
+
+    this.run_internal(molecule,max_levels, curr_level + 1)
   }
 
-  def run(max_levels : Int){
-    return this.run_internal(max_levels,0)
+  def run(mol : IMolecule,max_levels : Int){
+    return this.run_internal(mol,max_levels,0)
   }
 }
