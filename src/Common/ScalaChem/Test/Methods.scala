@@ -1,6 +1,5 @@
 package Common.ScalaChem.Test
 
-import Common.ScalaChem.Infrastructure.ChemicalElement.ChemicalElement
 import Common.ScalaChem.Infrastructure.{ChemicalElement, IAtom, IMolecule}
 import Common.ScalaChem.MolGraph.Atom
 
@@ -13,10 +12,10 @@ class Methods {
     for (i <- 0 to g.size) g(i) = newElement
   }
 
-  def replaceAtoms_fp(g : IMolecule) = {
-    var newElement = new Atom(ChemicalElement.C)
-    g.map(_ = newElement)
-  }
+  //def replaceAtoms_fp(g : IMolecule) = {
+  //  var newElement = new Atom(ChemicalElement.C)
+  //  g.map( _ = newElement)
+  //}
 
   //  zip
   def zipIt_oop (g : IMolecule) = {
@@ -48,30 +47,10 @@ class Methods {
     for (i <- 0 to g.size) total = total + g(i).Element.id
   }
 
-  // sum atomic number,
-  def sumAtomicNumber_fp(g : IMolecule) = {
-    var total = sum(IAtom)
 
-  }
-
-  def sum(xs: List[ChemicalElement]): Int = {
-    xs match {
-      case x :: tail => x + sum(tail) // if there is an element, add it to the sum of the tail
-      case Nil => 0 // if there are no elements, then the sum is 0
-    }
-  }
-
-  // zipwith max/plus
-  def zipWith_oop(g : IMolecule) = {
-    var ls = List[IAtom] = List()
-    for (i <- 0 to g.size) ls =  ls :+ g(i).Element
-  }
-
-  def fp(g : IMolecule) = {
-    var =
-
-  }
-
-
-
+ // // zipwith max/plus
+ // def zipWith_oop(g : IMolecule) = {
+  //  var ls = List[IAtom] = List()
+  //  for (i <- 0 to g.size) ls =  ls :+ g(i).Element
+  //}
 }

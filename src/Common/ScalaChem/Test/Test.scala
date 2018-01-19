@@ -4,22 +4,23 @@ import Common.ScalaChem.Infrastructure.IMolecule
 
 import scala.collection.mutable.ListBuffer
 
-class Test( func : (IMolecule)) {
+class TestMethod( func : IMolecule => Unit) {
    def Function(){return func;}
 }
 
 class TestRunner {
 
-  var items : ListBuffer[Test] =  new ListBuffer[Test]();
+  var items : ListBuffer[TestMethod] =  new ListBuffer[TestMethod]();
 
-  def inject(t : Test): Unit ={
+  def inject(t : TestMethod): Unit ={
       items += t;
   }
 
   private def run_internal(max_levels : Int, curr_level : Int): Unit = {
+    println("Currently at level :" + curr_level.toString)
     if(curr_level > max_levels)return;
 
-    for(i <- 0 to this.items.length){
+    for(i <- 0 to this.items.length - 1){
       this.items(i).Function();
     }
     this.run_internal(max_levels, curr_level + 1)
