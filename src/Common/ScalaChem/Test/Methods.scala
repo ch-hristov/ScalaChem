@@ -5,7 +5,6 @@ import Common.ScalaChem.MolGraph.Atom
 
 class Methods {
 
-
   //replace atom by
   def replaceAtoms_oop(g : IMolecule) = {
     var newElement = new Atom(ChemicalElement.C)
@@ -40,16 +39,24 @@ class Methods {
     g.filter((i: IAtom) => i != ChemicalElement.C)
   }
 
-  // sum atomic number, DOES id work here??
+  //sum atomicnumbers
   def sumAtomicNumber_oop(g : IMolecule) = {
     var total = 0
     for(i <- 0 to g.size - 1) total = total + g(i).Element.id
   }
 
+  def sumAtomicNumber_fp(g : IMolecule) = {
+    g.map(a => a.Element.id).sum
+  }
 
- // // zipwith max/plus
- // def zipWith_oop(g : IMolecule) = {
-  //  var ls = List[IAtom] = List()
-  //  for (i <- 0 to g.size) ls =  ls :+ g(i).Element
-  //}
+  // zipwith max/plus
+  def zipWith_oop(g : IMolecule) = {
+    var ls = List[Int] = List()
+    for (i <- 0 to g.size - 1) ls =  ls :+ (g(i).Element.id + g(i).Element.id)
+  }
+
+//  def zipWith_fp(g : IMolecule) = {
+//  }
+
+
 }
