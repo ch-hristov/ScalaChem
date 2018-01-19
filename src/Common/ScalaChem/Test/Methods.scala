@@ -9,7 +9,7 @@ class Methods {
   //replace atom by
   def replaceAtoms_oop(g : IMolecule) = {
     var newElement = new Atom(ChemicalElement.C)
-    for (i <- 0 to g.size) g(i) = newElement
+    for(i <- 0 to g.size - 1) g(i) = newElement
   }
 
   def replaceAtoms_fp(g : IMolecule) = {
@@ -22,7 +22,7 @@ class Methods {
     var ls1 = g
     var ls2 = g
     var listOfTuples  : List[(IAtom,IAtom)] = List()
-    for (i <- 0 to g.size)  listOfTuples = listOfTuples :+ (g(i), g(i))
+    for(i <- 0 to g.size - 1) listOfTuples = listOfTuples :+ (g(i), g(i))
   }
 
   def zipIt_fp (g : IMolecule) = {
@@ -33,7 +33,7 @@ class Methods {
 
   //  filterByElement
   def filterByElement_oop(g : IMolecule) = {
-    for (i <- 0 to g.size) if(g(i).Element == ChemicalElement.C){g(i) = null}
+    for(i <- 0 to g.size - 1) if(g(i).Element == ChemicalElement.C){g(i) = null}
   }
 
   def filterByElement_fp(g : IMolecule) = {
@@ -43,7 +43,7 @@ class Methods {
   // sum atomic number, DOES id work here??
   def sumAtomicNumber_oop(g : IMolecule) = {
     var total = 0
-    for (i <- 0 to g.size) total = total + g(i).Element.id
+    for(i <- 0 to g.size - 1) total = total + g(i).Element.id
   }
 
 
