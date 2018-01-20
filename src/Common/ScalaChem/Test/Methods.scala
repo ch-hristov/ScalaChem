@@ -49,14 +49,15 @@ class Methods {
     g.map(a => a.Element.id).sum
   }
 
-  // zipwith max/plus
+  // zipwith plus
   def zipWith_oop(g : IMolecule) = {
-    var ls = List[Int] = List()
+    var ls = List[Int]()
     for (i <- 0 to g.size - 1) ls =  ls :+ (g(i).Element.id + g(i).Element.id)
   }
 
-//  def zipWith_fp(g : IMolecule) = {
-//  }
-
+  def zipWith_fp(g : IMolecule) = {
+    var ls = g
+    g.map(a => a.Element.id + a.Element.id)
+  }
 
 }

@@ -19,11 +19,14 @@ object Main  extends App {
      oop_runner.inject(new TestMethod(methods.filterByElement_oop))
      oop_runner.inject(new TestMethod(methods.replaceAtoms_oop))
      oop_runner.inject(new TestMethod(methods.sumAtomicNumber_oop))
+     oop_runner.inject(new TestMethod(methods.zipWith_oop))
 
-     //TODO: Niels inject the other methods
+     //TODO: Niels inject the other methods ---> done =)
      func_runner.inject(new TestMethod(methods.zipIt_fp))
      func_runner.inject(new TestMethod(methods.filterByElement_fp))
      func_runner.inject(new TestMethod(methods.replaceAtoms_fp))
+     func_runner.inject(new TestMethod(methods.sumAtomicNumber_fp))
+     func_runner.inject(new TestMethod(methods.zipWith_fp))
 
      var k = 1000
 
