@@ -14,6 +14,46 @@ class Molecule extends mutable.MutableList[IAtom] with IMolecule {
     return _bonds
   }
 
+  // Clones the molecule
+  // Returns the cloned molecule and a correspondence map
+  // which maps the atom from one to the other molecule
+  // in order to measure equality
+  def clone_with_map() : (mutable.Map[IAtom,IAtom],IMolecule) = {
+    var newMol = new Molecule()
+
+    var mps = mutable.Map[IAtom,IAtom]();
+
+    for(i <- this){
+      var at = new Atom(i.Element,0)
+      newMol.appendElem(at)
+      mps(i) = at;
+    }
+
+    if(this.length > 0){
+      var visited = mutable.Map[IAtom,Boolean]()
+      return (mps,this.dfs_connect_atoms(newMol,this(0),mps,visited));
+    }
+    else{
+      throw new Exception("Trying to clone an empty molecule")
+    }
+  }
+
+  // maps the bonds from the cloned to the clone
+  private def dfs_connect_atoms(result : Molecule,
+                  curr : IAtom,
+                  atomMap : mutable.Map[IAtom,IAtom],
+                  visited : mutable.Map[IAtom,Boolean]): Molecule ={
+
+    for(i <- curr.connections()){
+        if(!visited(i)) {
+          result.connect(atomMap(curr), atomMap(i.To), i.Type)
+          dfs_connect_atoms(result, i.To ,atomMap,visited)
+        }
+    }
+
+    return result;
+  }
+
   private var _atomId = 0
   private var _num = mutable.Map[IAtom,Integer]()
   private var _graph = mutable.Map[IAtom,mutable.MutableList[IBond]]()
