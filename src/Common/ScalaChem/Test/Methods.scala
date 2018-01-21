@@ -32,7 +32,8 @@ class Methods {
 
   //  filterByElement
   def filterByElement_oop(g : IMolecule) = {
-    for(i <- 0 to g.size - 1) if(g(i).Element == ChemicalElement.C){g(i) = null}
+    var ls = List[IAtom]()
+    for(i <- 0 to g.size - 1) if(g(i).Element != ChemicalElement.C){ls = ls :+ g(i)}
   }
 
   def filterByElement_fp(g : IMolecule) = {
