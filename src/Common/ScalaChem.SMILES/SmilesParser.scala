@@ -13,7 +13,7 @@ class SmilesParser() {
   private var _aliph : List[Char] = List('C','B','N','O','P','S','F','I')
 
   // all aromatic atoms that are handled
-  private var _aromatic : List[Char] = List('c','b','n','o','p','s','f','i')\
+  private var _aromatic : List[Char] = List('c','b','n','o','p','s','f','i')
 
   // allowed cycle designations, currently these cycle designations are unique
   // and are you cannot have repeating cycles.

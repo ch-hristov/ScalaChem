@@ -45,8 +45,9 @@ class Molecule extends mutable.MutableList[IAtom] with IMolecule {
                   visited : mutable.Map[IAtom,Boolean]): Molecule ={
 
     for(i <- curr.connections()){
-        if(!visited(i)) {
+        if(!visited.contains(i.To)) {
           result.connect(atomMap(curr), atomMap(i.To), i.Type)
+          visited(i.To)=true;
           dfs_connect_atoms(result, i.To ,atomMap,visited)
         }
     }

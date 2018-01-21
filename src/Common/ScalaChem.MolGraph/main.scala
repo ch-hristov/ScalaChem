@@ -1,4 +1,5 @@
 package ScalaChem.MolGraph
+import Common.ScalaChem.MolGraph.{Isomorphism, Molecule}
 import Common.ScalaChem.SMILES.MoleculeParser
 import Common.ScalaChem.Test.{Methods, TestMethod, TestRunner}
 
@@ -7,6 +8,15 @@ object Main  extends App {
 
      var sp = new MoleculeParser()
      var molecule = sp.parse("CC1CCC1")
+
+     var matcher = sp.parse("CC")
+
+     var iso = new Isomorphism();
+
+     var results = iso.substructure_matches(molecule.asInstanceOf[Molecule],matcher.asInstanceOf[Molecule])
+
+     println(results.length)
+
 
      println(molecule.bonds().length);
 
