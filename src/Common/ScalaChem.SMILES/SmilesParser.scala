@@ -4,15 +4,27 @@ import Common.ScalaChem.Infrastructure.BondType.BondType
 import Common.ScalaChem.Infrastructure.{BondType, ChemicalElement, IAtom, IMolecule}
 import Common.ScalaChem.MolGraph.{Atom, Molecule}
 
+// A parser to create Molecules out of Smiles encoded objects.
 class SmilesParser() {
 
   // The dictionary of possible aliphatic, aromatic and cyclic structures
   // The (,),[,] are directly used in the parser below
-
+  // all aliphatic atoms that are handled
   private var _aliph : List[Char] = List('C','B','N','O','P','S','F','I')
-  private var _aromatic : List[Char] = List('c','b','n','o','p','s','f','i')
+
+  // all aromatic atoms that are handled
+  private var _aromatic : List[Char] = List('c','b','n','o','p','s','f','i')\
+
+  // allowed cycle designations, currently these cycle designations are unique
+  // and are you cannot have repeating cycles.
   private var _cycles : List[Char] = List('1','2','3','4','5','6','7','8','9')
 
+  // Create a molecule out of smiles
+  // by providing the smiles itself
+  // a handler of what to do when a new bond is to be parsed
+  // a handler of what to do when an atom is encountered
+  // Currently we parse only SMILES which consist of a single letter atoms.
+  // This could easily be extended by probing the parse the next letter.
   def parseSmiles(smiles : String, bond : (IAtom,IAtom,BondType) => Boolean, atomAdded : (IAtom) => Unit): IMolecule = {
     println("Starting parsing..");
 
@@ -46,8 +58,6 @@ class SmilesParser() {
 
         if(atomStack.length > 0)
           atomStack.pop
-
-
 
         atomStack.push(atom)
       } else {

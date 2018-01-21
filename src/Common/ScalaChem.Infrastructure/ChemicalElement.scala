@@ -1,5 +1,6 @@
 package Common.ScalaChem.Infrastructure
 
+// All possible chemical elements
 object ChemicalElement extends Enumeration(1){
     type ChemicalElement = Value
     val H  =  Value(1)

@@ -4,8 +4,12 @@ import Common.ScalaChem.Infrastructure.{IAtom, IBond, IMolecule}
 
 import scala.collection.mutable
 
+///An object that describes a molecule and methods related to it.
+// It provides methods to compute various properties on the molecule
+// and also offers a way to access the atoms in the molecule
 class Molecule extends mutable.MutableList[IAtom] with IMolecule {
 
+  // returns the list of all bonds
   def bonds() : mutable.ListBuffer[IBond] = {
     return _bonds
   }
@@ -15,6 +19,7 @@ class Molecule extends mutable.MutableList[IAtom] with IMolecule {
   private var _graph = mutable.Map[IAtom,mutable.MutableList[IBond]]()
   private var _bonds = mutable.ListBuffer[IBond]()
 
+  // Appends a new atom to the list of atoms
   override def appendElem(elem: IAtom): Unit = {
     _graph(elem) = new mutable.MutableList[IBond]()
     _num(elem)=_atomId
@@ -23,6 +28,7 @@ class Molecule extends mutable.MutableList[IAtom] with IMolecule {
     super.appendElem(elem)
   }
 
+  // Connects two atoms a and b with a bond of type t
   override def connect(a: IAtom, b: IAtom, t : BondType): Boolean = {
     if(!this.contains(a) || !this.contains(b))
       return false
@@ -33,6 +39,10 @@ class Molecule extends mutable.MutableList[IAtom] with IMolecule {
     return true
   }
 
+  // Returns a smiles of the molecule
+  // This method is not implemented yet as
+  // we only implemented the SMILES to graph,
+  // therefore this method is not complete and should not be used yet.
   override def toString: String = {
     return this.getSmiles()
   }
@@ -44,7 +54,7 @@ class Molecule extends mutable.MutableList[IAtom] with IMolecule {
     })
     return str;
   }
-
+  //return the neighbours of atom : atom
   override def neighboursOf(atom: IAtom): List[IBond] ={
     return this._graph(atom).toList;
   }

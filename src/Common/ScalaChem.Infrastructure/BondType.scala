@@ -1,5 +1,7 @@
 package Common.ScalaChem.Infrastructure
 
+
+// All possible bond types
 object BondType extends Enumeration(1){
     type BondType = Value
     val Single    = Value(1)
