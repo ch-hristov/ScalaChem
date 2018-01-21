@@ -19,7 +19,7 @@ class TestRunner {
   }
 
   private def run_internal(molecule : IMolecule,max_levels : Int, curr_level : Int): Unit = {
-    println("Currently at level :" + curr_level.toString)
+   // println("Currently at level :" + curr_level.toString)
     if(curr_level > max_levels)return;
 
     for(i <- 0 to this.items.length - 1)

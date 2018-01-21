@@ -38,6 +38,7 @@ class Methods {
 
   def filterByElement_fp(g : IMolecule) = {
     g.filter((i: IAtom) => i != ChemicalElement.C)
+   // filterByElement_oop(g)
   }
 
   //sum atomicnumbers
