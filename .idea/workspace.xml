@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="28ec441a-0af7-40d3-9479-7f0b25b40d03" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Common/ScalaChem.Infrastructure/IMolecule.scala" afterPath="$PROJECT_DIR$/src/Common/ScalaChem.Infrastructure/IMolecule.scala" />
       <change beforePath="$PROJECT_DIR$/src/Common/ScalaChem.MolGraph/Isomorphism.scala" afterPath="$PROJECT_DIR$/src/Common/ScalaChem.MolGraph/Isomorphism.scala" />
-      <change beforePath="$PROJECT_DIR$/src/Common/ScalaChem.MolGraph/Molecule.scala" afterPath="$PROJECT_DIR$/src/Common/ScalaChem.MolGraph/Molecule.scala" />
-      <change beforePath="$PROJECT_DIR$/src/Common/ScalaChem.SMILES/MoleculeParser.scala" afterPath="$PROJECT_DIR$/src/Common/ScalaChem.SMILES/MoleculeParser.scala" />
-      <change beforePath="$PROJECT_DIR$/src/Common/ScalaChem/Test/Methods.scala" afterPath="$PROJECT_DIR$/src/Common/ScalaChem/Test/Methods.scala" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -46,8 +42,8 @@
       <file leaf-file-name="Molecule.scala" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Common/ScalaChem.MolGraph/Molecule.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="185">
-              <caret line="19" column="4" lean-forward="false" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="4" />
+            <state relative-caret-position="-10">
+              <caret line="59" column="30" lean-forward="false" selection-start-line="59" selection-start-column="19" selection-end-line="59" selection-end-column="30" />
               <folding>
                 <element signature="e#34#90#0" expanded="true" />
               </folding>
@@ -55,11 +51,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.scala" pinned="false" current-in-tab="false">
+      <file leaf-file-name="main.scala" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Common/ScalaChem.MolGraph/main.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="245">
-              <caret line="78" column="32" lean-forward="false" selection-start-line="78" selection-start-column="32" selection-end-line="78" selection-end-column="32" />
+            <state relative-caret-position="1337">
+              <caret line="73" column="0" lean-forward="true" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
               <folding>
                 <element signature="e#28#84#0" expanded="true" />
               </folding>
@@ -77,11 +73,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Isomorphism.scala" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Isomorphism.scala" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Common/ScalaChem.MolGraph/Isomorphism.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="23" column="12" lean-forward="false" selection-start-line="23" selection-start-column="12" selection-end-line="23" selection-end-column="12" />
+            <state relative-caret-position="315">
+              <caret line="27" column="45" lean-forward="true" selection-start-line="27" selection-start-column="45" selection-end-line="27" selection-end-column="45" />
               <folding />
             </state>
           </provider>
@@ -125,7 +121,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="312" />
     <option name="y" value="24" />
     <option name="width" value="1400" />
@@ -348,7 +344,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1060" extended-state="7" />
+    <frame x="-9" y="-9" width="1938" height="1060" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -427,12 +423,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="scala-line">
-          <url>file://$PROJECT_DIR$/src/Common/ScalaChem.MolGraph/Isomorphism.scala</url>
-          <line>27</line>
-          <properties />
-          <option name="timeStamp" value="21" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="scala-line">
           <url>file://$PROJECT_DIR$/src/Common/ScalaChem.MolGraph/Molecule.scala</url>
           <line>18</line>
@@ -758,16 +748,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Common/ScalaChem.MolGraph/main.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="78" column="32" lean-forward="false" selection-start-line="78" selection-start-column="32" selection-end-line="78" selection-end-column="32" />
-          <folding>
-            <element signature="e#28#84#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Common/ScalaChem.SMILES/MoleculeParser.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="182">
@@ -802,21 +782,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Common/ScalaChem.MolGraph/Isomorphism.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="27" column="45" lean-forward="true" selection-start-line="27" selection-start-column="45" selection-end-line="27" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Common/ScalaChem.MolGraph/Molecule.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="19" column="4" lean-forward="false" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="4" />
+        <state relative-caret-position="-10">
+          <caret line="59" column="30" lean-forward="false" selection-start-line="59" selection-start-column="19" selection-end-line="59" selection-end-column="30" />
           <folding>
             <element signature="e#34#90#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Common/ScalaChem.MolGraph/Isomorphism.scala">
+    <entry file="file://$PROJECT_DIR$/src/Common/ScalaChem.MolGraph/main.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="23" column="12" lean-forward="false" selection-start-line="23" selection-start-column="12" selection-end-line="23" selection-end-column="12" />
-          <folding />
+        <state relative-caret-position="1337">
+          <caret line="73" column="0" lean-forward="true" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
+          <folding>
+            <element signature="e#28#84#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

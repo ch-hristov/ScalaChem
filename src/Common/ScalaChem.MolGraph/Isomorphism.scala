@@ -21,7 +21,7 @@ class Isomorphism {
       for (atom <- to_find.Graph.keys) {
         for (match_atom <- base.Graph.keys) {
           if (matches(atom, match_atom)) {
-            
+
             var newBaseMap = base.clone_with_map();
             var newBase = newBaseMap._2.asInstanceOf[Molecule]
 
