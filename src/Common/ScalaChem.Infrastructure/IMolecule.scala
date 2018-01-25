@@ -2,10 +2,9 @@ package Common.ScalaChem.Infrastructure
 
 import Common.ScalaChem.Infrastructure.BondType.BondType
 
-import scala.collection.mutable
 import scala.collection.mutable.ListBuffer
 
-trait IMolecule extends mutable.MutableList[IAtom] {
+trait IMolecule{
 
   //
   // Returns neighbours of atom

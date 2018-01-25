@@ -11,16 +11,17 @@ class Isomorphism {
   private def substructure_match(base : Molecule,
                          to_find : Molecule,
                          list : ListBuffer[(IAtom,IAtom)]): Unit = {
-    if (base.length < to_find.length) {
+    if (base.Graph.keys.size < to_find.Graph.keys.size) {
       return (false, null)
     } else {
-      if (to_find.length == 0) {
+      if (to_find.Graph.keys.size == 0) {
         data.append(list);
       }
-      for (atom <- to_find) {
-        for (match_atom <- base) {
-          if (matches(atom, match_atom)) {
 
+      for (atom <- to_find.Graph.keys) {
+        for (match_atom <- base.Graph.keys) {
+          if (matches(atom, match_atom)) {
+            
             var newBaseMap = base.clone_with_map();
             var newBase = newBaseMap._2.asInstanceOf[Molecule]
 
@@ -31,11 +32,13 @@ class Isomorphism {
             newSearch.disconnect(newSearchMap._1(atom))
 
             var list_clone = list.clone();
-            list_clone.append((atom, match_atom))
+            list_clone.append((atom, match_atom));
+
             substructure_match(newBase, newSearch, list_clone)
           }
         }
       }
+
     }
   }
 
