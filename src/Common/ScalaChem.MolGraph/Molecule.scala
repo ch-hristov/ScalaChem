@@ -14,6 +14,15 @@ class Molecule extends mutable.MutableList[IAtom] with IMolecule {
     return _bonds
   }
 
+  def disconnect(atom : IAtom): Unit ={
+    var x = _graph(atom)
+    for(z <- x){
+     var filtered = _graph(z.To).filter(x => x.To == atom)
+      _graph(z.To)=filtered;
+    }
+    _graph.remove(atom)
+  }
+
   // Clones the molecule
   // Returns the cloned molecule and a correspondence map
   // which maps the atom from one to the other molecule
@@ -31,28 +40,29 @@ class Molecule extends mutable.MutableList[IAtom] with IMolecule {
 
     if(this.length > 0){
       var visited = mutable.Map[IAtom,Boolean]()
-      return (mps,this.dfs_connect_atoms(newMol,this(0),mps,visited));
+      return (mps,this.bfs_connect_atoms(newMol,this(0),mps,visited));
     }
     else{
       throw new Exception("Trying to clone an empty molecule")
     }
   }
 
-  // maps the bonds from the cloned to the clone
-  private def dfs_connect_atoms(result : Molecule,
-                  curr : IAtom,
-                  atomMap : mutable.Map[IAtom,IAtom],
-                  visited : mutable.Map[IAtom,Boolean]): Molecule ={
+  def bfs_connect_atoms(mol : Molecule, atom : IAtom,atomMap : mutable.Map[IAtom,IAtom], visited : mutable.Map[IAtom,Boolean] ): Molecule ={
+    var q = new mutable.Queue[IAtom]()
+    q.enqueue(atom)
 
-    for(i <- curr.connections()){
-        if(!visited.contains(i.To)) {
-          result.connect(atomMap(curr), atomMap(i.To), i.Type)
-          visited(i.To)=true;
-          dfs_connect_atoms(result, i.To ,atomMap,visited)
+    while(q.length > 0){
+      var top = q.dequeue()
+      visited(top)=true
+      for(x <- top.connections()){
+        if(!visited.contains(x.To)){
+          mol.connect(atomMap(top),atomMap(x.To),x.Type)
+          q.enqueue(x.To)
         }
+      }
     }
 
-    return result;
+    return  mol;
   }
 
   private var _atomId = 0
@@ -97,6 +107,7 @@ class Molecule extends mutable.MutableList[IAtom] with IMolecule {
   }
   //return the neighbours of atom : atom
   override def neighboursOf(atom: IAtom): List[IBond] ={
-    return this._graph(atom).toList;
+    var neighbours = this._graph(atom).toList;
+    return neighbours;
   }
 }

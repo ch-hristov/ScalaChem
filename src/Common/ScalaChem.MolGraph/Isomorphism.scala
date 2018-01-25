@@ -22,14 +22,17 @@ class Isomorphism {
           if (matches(atom, match_atom)) {
 
             var newBaseMap = base.clone_with_map();
-            var newBase = newBaseMap._2
+            var newBase = newBaseMap._2.asInstanceOf[Molecule]
 
             var newSearchMap = to_find.clone_with_map();
-            var newSearch = newSearchMap._2;
+            var newSearch = newSearchMap._2.asInstanceOf[Molecule]
 
-            var list_clone = list.clone().asInstanceOf[ListBuffer[(IAtom, IAtom)]]
+            newBase.disconnect(newBaseMap._1(match_atom))
+            newSearch.disconnect(newSearchMap._1(atom))
+
+            var list_clone = list.clone();
             list_clone.append((atom, match_atom))
-            substructure_match(newBase.asInstanceOf[Molecule], newSearch.asInstanceOf[Molecule], list_clone)
+            substructure_match(newBase, newSearch, list_clone)
           }
         }
       }
