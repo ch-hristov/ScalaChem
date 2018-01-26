@@ -82,9 +82,7 @@ object Main  extends App {
                                     mp.parse("CCCC")
                                                       .asInstanceOf[Molecule])
 
-     for(i <- y){
-       print(i)
-     }
+     println(y);
 
    }
 }

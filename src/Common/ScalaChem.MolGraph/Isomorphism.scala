@@ -12,15 +12,17 @@ class Isomorphism {
   private var matchedA = mutable.Map[IAtom,Boolean]()
   private var matchedB = mutable.Map[IAtom,Boolean]()
 
-  private def substructure_match(
-                                length : Int,
-                                  base : mutable.Map[IAtom,Boolean],
-                         to_find : mutable.Map[IAtom,Boolean],
-                         matchedA : IAtom,
-                         matchedB : IAtom,
-                         list : ListBuffer[(IAtom,IAtom)]): ListBuffer[(IAtom,IAtom)] = {
-    if(to_find.forall(x=>x._2 == true))
-      return list;
+  private def substructure_match(length : Int, base : mutable.Map[IAtom,Boolean],
+                                               to_find : mutable.Map[IAtom,Boolean],
+                                               matchedA : IAtom,
+                                               matchedB : IAtom,
+                                               list : ListBuffer[(IAtom,IAtom)]): Boolean = {
+    base(matchedA) = true
+    to_find(matchedB) = true;
+
+    if(to_find.forall(x=>x._2 == true)) {
+      return true;
+    }
 
     var con = matchedA.connections()
 
@@ -38,23 +40,20 @@ class Isomorphism {
               var findc = to_find.clone()
               var lc = list.clone()
               lc.append((at, gt))
-              basec(at) = true
-              findc(gt) = true;
+
               var ans = substructure_match(length,basec, findc, at, gt, lc)
-              if(ans != null){
-                return ans
-              }
+              if(ans)return ans;
             }
           }
         }
       }
     }
-    return null;
+    return false;
 
   }
 
    def substructure_matches(base : Molecule,
-                           to_find : Molecule): mutable.ListBuffer[(IAtom,IAtom)] ={
+                           to_find : Molecule): Boolean ={
      for(i <- base.Graph.keys){
        matchedA(i)=false;
      }
@@ -64,17 +63,15 @@ class Isomorphism {
     this.data =new mutable.ListBuffer[(IAtom,IAtom)]();
      for(i <- base.Graph){
        for(j <- to_find.Graph){
-         if(i._1.connections().length == j._1.connections().length) {
+         if(matches(i._1,j._1)) {
            var l = this.substructure_match(to_find.Graph.size, matchedA, matchedB, i._1, j._1,
                                                                new ListBuffer[(IAtom, IAtom)]);
-           if (l != null && l.length > this.data.length) {
-             this.data = l;
-           }
+           if(l)return true;
          }
        }
      }
 
-    return this.data;
+    return false;;
   }
 
     //This should be a real comparision with charge and stuff..
