@@ -77,7 +77,7 @@ object Main  extends App {
      var x = new Isomorphism();
 
      var y = x.substructure_matches(
-                                    mp.parse("CCCCCC")
+                                    mp.parse("CCCCCCCCCC")
                                                       .asInstanceOf[Molecule],
                                     mp.parse("CCCC")
                                                       .asInstanceOf[Molecule])

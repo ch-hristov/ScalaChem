@@ -26,18 +26,14 @@ class SmilesParser() {
   // Currently we parse only SMILES which consist of a single letter atoms.
   // This could easily be extended by probing the parse the next letter.
   def parseSmiles(smiles : String, bond : (IAtom,IAtom,BondType) => Boolean, atomAdded : (IAtom) => Unit): IMolecule = {
-    println("Starting parsing..");
-
     var numStack = scala.collection.mutable.Stack[Int]()
     val atomStack = scala.collection.mutable.Stack[IAtom]()
     var mol = new Molecule()
     var cycleMap = Map[Char,IAtom]();
 
     for(c <- smiles) {
-      println(atomStack.length)
       var next = c
 
-      println("Next token : " + next)
       var index: Int = 0
 
       if ((_aliph.contains(next) && (index = _aliph.indexOf(next)) != -1) ||

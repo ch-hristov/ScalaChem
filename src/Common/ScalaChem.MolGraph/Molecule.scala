@@ -7,20 +7,11 @@ import scala.collection.mutable
 ///An object that describes a molecule and methods related to it.
 // It provides methods to compute various properties on the molecule
 // and also offers a way to access the atoms in the molecule
-class Molecule extends mutable.MutableList[IAtom] with IMolecule {
-
+class Molecule extends IMolecule {
+  var Graph = mutable.Map[IAtom,mutable.ListBuffer[IBond]]()
   // returns the list of all bonds
   def bonds() : mutable.ListBuffer[IBond] = {
     return _bonds
-  }
-
-  def disconnect(atom : IAtom): Unit ={
-    var x = _graph(atom)
-    for(z <- x){
-     var filtered = _graph(z.To).filter(x => x.To == atom)
-      _graph(z.To)=filtered;
-    }
-    _graph.remove(atom)
   }
 
   // Clones the molecule
@@ -31,16 +22,16 @@ class Molecule extends mutable.MutableList[IAtom] with IMolecule {
     var newMol = new Molecule()
 
     var mps = mutable.Map[IAtom,IAtom]();
-
-    for(i <- this){
+    var keys = Graph.keys
+    for(i <- Graph.keys){
       var at = new Atom(i.Element,0)
       newMol.appendElem(at)
       mps(i) = at;
     }
 
-    if(this.length > 0){
+    if(Graph.keys.size > 0){
       var visited = mutable.Map[IAtom,Boolean]()
-      return (mps,this.bfs_connect_atoms(newMol,this(0),mps,visited));
+      return (mps,this.bfs_connect_atoms(newMol,Graph.keys.last,mps,visited));
     }
     else{
       throw new Exception("Trying to clone an empty molecule")
@@ -54,10 +45,11 @@ class Molecule extends mutable.MutableList[IAtom] with IMolecule {
     while(q.length > 0){
       var top = q.dequeue()
       visited(top)=true
-      for(x <- top.connections()){
-        if(!visited.contains(x.To)){
-          mol.connect(atomMap(top),atomMap(x.To),x.Type)
-          q.enqueue(x.To)
+      var conn = top.connections()
+      for(x <- 0 to conn.length - 1){
+        if(!visited.contains(conn(x).To)){
+          mol.connect(atomMap(top),atomMap(conn(x).To),conn(x).Type)
+          q.enqueue(conn(x).To)
         }
       }
     }
@@ -67,25 +59,23 @@ class Molecule extends mutable.MutableList[IAtom] with IMolecule {
 
   private var _atomId = 0
   private var _num = mutable.Map[IAtom,Integer]()
-  private var _graph = mutable.Map[IAtom,mutable.MutableList[IBond]]()
   private var _bonds = mutable.ListBuffer[IBond]()
 
   // Appends a new atom to the list of atoms
-  override def appendElem(elem: IAtom): Unit = {
-    _graph(elem) = new mutable.MutableList[IBond]()
+  def appendElem(elem: IAtom): Unit = {
+    Graph(elem) = new mutable.ListBuffer[IBond]()
     _num(elem)=_atomId
     this._atomId = this._atomId + 1
     elem.setMolecule(this)
-    super.appendElem(elem)
   }
 
   // Connects two atoms a and b with a bond of type t
   override def connect(a: IAtom, b: IAtom, t : BondType): Boolean = {
-    if(!this.contains(a) || !this.contains(b))
+    if(!Graph.contains(a) || !Graph.contains(b))
       return false
     val bond = new Bond(a,b,t)
-    _graph(a) += bond
-    _graph(b) += bond
+    Graph(a) += bond
+    Graph(b) += bond
     _bonds += bond.asInstanceOf[IBond]
     return true
   }
@@ -100,14 +90,14 @@ class Molecule extends mutable.MutableList[IAtom] with IMolecule {
 
   private def getSmiles(): String ={
     var str = "";
-    this.foreach(v => {
+    Graph.keys.foreach(v => {
       str += v.toString()
     })
     return str;
   }
   //return the neighbours of atom : atom
   override def neighboursOf(atom: IAtom): List[IBond] ={
-    var neighbours = this._graph(atom).toList;
+    var neighbours = Graph(atom).toList;
     return neighbours;
   }
 }
