@@ -14,18 +14,6 @@ class Molecule extends IMolecule {
     return _bonds
   }
 
-  def disconnect(atom : IAtom): Unit ={
-
-    var iter = Graph(atom)
-    for(i <- 0 to iter.length - 1){
-      var item = iter(i)
-      Graph(item.To) -= item
-      Graph(atom) -= item
-    }
-    Graph.remove(atom)
-
-  }
-
   // Clones the molecule
   // Returns the cloned molecule and a correspondence map
   // which maps the atom from one to the other molecule
@@ -34,7 +22,7 @@ class Molecule extends IMolecule {
     var newMol = new Molecule()
 
     var mps = mutable.Map[IAtom,IAtom]();
-
+    var keys = Graph.keys
     for(i <- Graph.keys){
       var at = new Atom(i.Element,0)
       newMol.appendElem(at)
@@ -57,10 +45,11 @@ class Molecule extends IMolecule {
     while(q.length > 0){
       var top = q.dequeue()
       visited(top)=true
-      for(x <- top.connections()){
-        if(!visited.contains(x.To)){
-          mol.connect(atomMap(top),atomMap(x.To),x.Type)
-          q.enqueue(x.To)
+      var conn = top.connections()
+      for(x <- 0 to conn.length - 1){
+        if(!visited.contains(conn(x).To)){
+          mol.connect(atomMap(top),atomMap(conn(x).To),conn(x).Type)
+          q.enqueue(conn(x).To)
         }
       }
     }
