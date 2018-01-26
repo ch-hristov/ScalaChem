@@ -2,17 +2,19 @@ package Common.ScalaChem.Test
 
 import Common.ScalaChem.Infrastructure.{ChemicalElement, IAtom, IMolecule}
 import Common.ScalaChem.MolGraph.Atom
+import Common.ScalaChem.MolGraph.Molecule
 
 class Methods {
 
   //replace atom by
-  def replaceAtoms_oop(g : IMolecule) = {
+  def replaceAtoms_oop(g : Molecule) = {
     var newElement = new Atom(ChemicalElement.C)
-    //for(i <- 0 to g.keys.size - 1) g.keys(i) = newElement
+//    for(i <- g.Graph.keys.size) g.Graph.update(newElement, i)
   }
 
-  def replaceAtoms_fp(g : IMolecule) = {
+  def replaceAtoms_fp(g : Molecule) = {
     var newElement = new Atom(ChemicalElement.C)
+    g.Graph.map(_ -> newElement)
     //g.keys.map( _ -> newElement)
   }
 
@@ -24,10 +26,10 @@ class Methods {
     //for(i <- 0 to g.keys.size - 1) listOfTuples = listOfTuples :+ (g.keys(i), g.keys(i))
   }
 
-  def zipIt_fp (g : IMolecule) = {
-    var ls1 = g
-    var ls2 = g
-    //ls1.zip(ls2)
+  def zipIt_fp (g : Molecule) = {
+    var ls1 = g.Graph
+    var ls2 = g.Graph
+    ls1.zip(ls2)
   }
 
   //  filterByElement
@@ -36,9 +38,9 @@ class Methods {
     //for(i <- 0 to g.size - 1) if(g(i).Element != ChemicalElement.C){ls = ls :+ g(i)}
   }
 
-  def filterByElement_fp(g : IMolecule) = {
-    //g.filter((i: IAtom) => i != ChemicalElement.C)
-   // filterByElement_oop(g)
+  def filterByElement_fp(g : Molecule) = {
+//    g.Graph.filter((i : IAtom) => i.Element != ChemicalElement.C)
+//    filterByElement_oop(g)
   }
 
   //sum atomicnumbers
@@ -47,8 +49,8 @@ class Methods {
     //for(i <- 0 to g.size - 1) total = total + g(i).Element.id
   }
 
-  def sumAtomicNumber_fp(g : IMolecule) = {
-    //g.map(a => a.Element.id).sum
+  def sumAtomicNumber_fp(g : Molecule) = {
+//    g.Graph.map(a => a.Element.id).sum
   }
 
   // zipwith plus
@@ -57,9 +59,9 @@ class Methods {
     //for (i <- 0 to g.size - 1) ls =  ls :+ (g(i).Element.id + g(i).Element.id)
   }
 
-  def zipWith_fp(g : IMolecule) = {
-    var ls = g
-    //g.map(a => a.Element.id + a.Element.id)
+  def zipWith_fp(g : Molecule) = {
+    var ls = g.Graph
+//    g.map(a => a.Element.id + a.Element.id)
   }
 
 }
